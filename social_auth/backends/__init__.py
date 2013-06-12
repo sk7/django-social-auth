@@ -9,6 +9,8 @@ Also the modules *must* define a BACKENDS dictionary with the backend name
 (which is used for URLs matching) and Auth class, otherwise it won't be
 enabled.
 """
+import re
+
 from urllib2 import Request, HTTPError
 from urllib import urlencode
 
