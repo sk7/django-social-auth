@@ -432,6 +432,9 @@ class BaseAuth(object):
         https:// if SOCIAL_AUTH_REDIRECT_IS_HTTPS is defined.
         """
         uri = self.request.build_absolute_uri(path)
+
+        if setting('SOCIAL_ATUH_REDIRECT_REWRITE_FROM') and setting('SOCIAL_ATUH_REDIRECT_REWRITE_TO'):
+            uri = re.sub(setting('SOCIAL_ATUH_REDIRECT_REWRITE_FROM'), setting('SOCIAL_ATUH_REDIRECT_REWRITE_TO'), uri)
         if setting('SOCIAL_AUTH_REDIRECT_IS_HTTPS'):
             uri = uri.replace('http://', 'https://')
         return uri
